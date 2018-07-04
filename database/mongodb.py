@@ -17,11 +17,15 @@ class MongoDB(object):
         :param collection_name: the name of collection want to store the files
         """
         i = 0
+        j = 0
         for article_json in XMLRead(import_dir_name):
             self.db[collection_name].insert_one(article_json)
             i+=1
             if i%10000==0:
                 print(i)
+                j+=1
+                if j>3:
+                    break
 
     def read(self, collection_name, limit=None):
         """
@@ -218,53 +222,6 @@ class MongoDB(object):
 
 
 if __name__ == '__main__':
-    t1 = time.time()
-
-    #TODO adding a page for population database
-    #dirname = "/home/rohola/Desktop/ftp"
-    dirname = "/media/rohola/09183702400/home/Desktop/dataset"
-    mongodb = MongoDB("pubmeddb")
-    # mongodb.populate_db(dirname, "articles")
-
-    #mongodb.read("articles")
-    #mongodb.drop("articles")
-    #q = {"article.journal.volume": '23'}
-    #mongodb.query("articles", q)
-    #mongodb.count("articles", q)
-    #countries = mongodb.get_all_countries("articles")
-    #print(countries)
-    #t2 = time.time()
-    #print(t2 - t1)
-
-
-    # top10_journals = [u'The Journal of biological chemistry', u'Science (New York, N.Y.)', u'PloS one', u'Lancet (London, England)',
-    #  u'Proceedings of the National Academy of Sciences of the United States of America', u'Nature',
-    #  u'Biochimica et biophysica acta', u'British medical journal',
-    #  u'Biochemical and biophysical research communications', u'Physical review letters']
-    # top10_journals = None
-    # top10_authors = ['Wang Wei W', 'Zhang Wei W', 'Suzuki T T', 'Wang Y Y', 'Suzuki K K', 'Nakamura T T', 'Tanaka K K', 'Takahashi M M', 'Li Wei W', 'Takahashi K K']
-    # top10_authors = None
-    # countries = None#["United States", "China"]
-    # date_from = None#datetime(1970, 1, 1)
-    # date_to = None#datetime(2010, 1, 1)
-    # t1 = time.time()
-    # dates, abstracts = mongodb.simple_query("articles",
-    #                                          countries,
-    #                                           date_from,
-    #                                          date_to,
-    #                                          top10_journals,
-    #                                           top10_authors)
-    #
-    # print(abstracts)
-
-
-    #mongodb.drop_index(collection_name="articles", index_name="article.abstract_text")
-    mongodb.create_text_index(collection_name="articles", fields=["article.abstract"])
-    #a = mongodb.test_query(collection_name="articles")
-    # print(a)
-    # for m in a:
-    #     print(m)
-
-    t2 = time.time()
-    print(t2-t1)
-    print(pymongo.__version__)
+    dirname = "/media/rohola/09183702400/home/Desktop/data"
+    mongodb = MongoDB("pubmeddbtest")
+    mongodb.populate_db(dirname, "articles")

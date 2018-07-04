@@ -44,6 +44,9 @@ class XMLRead(object):
         :param tag:
         :return:
         """
+        if type(xmlstring) is bytes:
+            xmlstring = xmlstring.decode('utf-8')
+
         context = ET.iterparse(io.BytesIO(xmlstring.encode("utf-8")), events=('end',), tag=tag)
         texts = self.fast_xml_iter(context, lambda elem: None)
         return texts
@@ -52,20 +55,29 @@ class XMLRead(object):
         """
         create a json tag per each document with the following structure
         {
-            "datecreated": date_created,
-            "article": {
-                "abstract": abstract_text,
-                "journal": {
-                    "title": title
-                    "volume": volume,
-                    "issue": issue
-                },
-                "articletitle": article_title,
-                "authorlist": [{"lastname":lastname,
-                                "forename": forename,
-                                "initials":initials},...]
+        "PMID": PMID,
+        "datecreated": date_created,
+        "datecompleted": date_completed
+        "article": {
+            "abstract": abstract_text,
+            "journal": {
+                "title": title
+                "volume": volume,
+                "issue": issue,
+                "ISSN": ISSN,
+                "pubdate": pubdate
             },
-            "country": country
+            "articletitle": article_title,
+            "authorlist": [{"lastname":lastname,
+                            "forename": forename,
+                            "initials":initials},...]
+        },
+        "country": country,
+        "medlinejournalinfo": {
+            "country": country,
+            "medlineta": medline_ta,
+            "ISSNlinking": ISSN_linking,
+        },
         }
         :param context: contains events and elements tags
         :param func:
@@ -83,13 +95,23 @@ class XMLRead(object):
                 abstract_text = abstract_tag[0].text
                 pubmedarticledict["article"]["abstract"] = abstract_text
 
+            PMID_tag = elem.findall(".//PMID")
+            if PMID_tag and PMID_tag[0].text:
+                PMID = PMID_tag[0].text
+                pubmedarticledict["PMID"] = PMID
+
 
             date_tag = elem.findall(".//DateCreated")
-
             year, month, day = date_tag[0].getchildren()
-
             date_created = datetime(year=int(year.text), month=int(month.text), day=int(day.text))
             pubmedarticledict["datecreated"] = date_created
+
+
+            date_completed_tag = elem.findall(".//DateCompleted")
+            year, month, day = date_completed_tag[0].getchildren()
+            date_completed = datetime(year=int(year.text), month=int(month.text), day=int(day.text))
+            pubmedarticledict["datecompleted"] = date_completed
+
 
             title_tag = elem.findall(".//Title")
             if title_tag and title_tag[0].text:
@@ -105,6 +127,23 @@ class XMLRead(object):
             if issue_tag and issue_tag[0].text:
                 issue = issue_tag[0].text
                 pubmedarticledict["article"]["journal"]["issue"] = issue
+
+
+            ISSN_tag = elem.findall(".//ISSN")
+            if ISSN_tag and ISSN_tag[0].text:
+                ISSN = ISSN_tag[0].text
+                pubmedarticledict["article"]["journal"]["ISSN"] = ISSN
+
+            pubdate_tag = elem.findall(".//PubDate")
+            if pubdate_tag and len(pubdate_tag[0].getchildren())==2:
+                year, month = pubdate_tag[0].getchildren()
+                try:
+                    pubdate = datetime(year=int(year.text), month=self.month_to_number[month.text], day=1)
+                except:
+                    pubdate = datetime(year=int(year.text), month=1, day=1)
+                pubmedarticledict["article"]["journal"]["pubdate"] = pubdate
+
+
 
             article_title_tag = elem.findall(".//ArticleTitle")
             if article_title_tag and article_title_tag[0].text:
@@ -130,6 +169,22 @@ class XMLRead(object):
                 country = country_tag[0].text
                 pubmedarticledict["country"] = country
 
+            medline_journal_info_tag = elem.find(".//MedlineJournalInfo")
+            if medline_journal_info_tag is not None:
+                pubmedarticledict["medlinejournalinfo"] = {}
+
+            for medline_journal_info_item_tag in medline_journal_info_tag.getchildren():
+
+                if medline_journal_info_item_tag.tag == "Country":
+                    pubmedarticledict["medlinejournalinfo"]["country"] = medline_journal_info_item_tag.text
+
+                if medline_journal_info_item_tag.tag == "MedlineTA":
+                    pubmedarticledict["medlinejournalinfo"]["medlineta"] = medline_journal_info_item_tag.text
+
+                if medline_journal_info_item_tag.tag == "ISSNLinking":
+                    pubmedarticledict["medlinejournalinfo"]["ISSNlinking"] = medline_journal_info_item_tag.text
+
+
             all_texts.append(pubmedarticledict)
 
             func(elem, *args, **kwargs)
@@ -144,8 +199,9 @@ class XMLRead(object):
 
 
 if __name__ == "__main__":
-    a = "<families><family><name>Simpson</name><members><name>Hommer</name><name>Marge</name><name>Bart</name></members></family><family><name>Griffin</name><members><name>Peter</name><name>Brian</name><name>Meg</name></members></family></families>"
-    xmlread = XMLRead("")
-    xmlread.get_all_texts(a, "name")
+    #xmlread = XMLRead(dirname = "/media/rohola/09183702400/home/Desktop/ftp")
+    xmlread = XMLRead(dirname = "/home/rohola/tmp/a")
+    for item in xmlread:
+        print(item)
 
     #a = io.BytesIO("sa".encode("utf-8"))
