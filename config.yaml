@@ -1,0 +1,12 @@
+files:
+    cancer_name_file: "dataset/keywords.txt"
+    nano_particle_file: "dataset/nano_particles.txt"
+    biosensor_file: "dataset/biosensors.txt"
+    raw_xml_dir: "/media/rohola/09183702400/home/Desktop/data"
+
+
+database:
+    root: "/home/rohola/mongodb_data"
+    name: "pubmeddb"
+    collection_name: "articles"
+
