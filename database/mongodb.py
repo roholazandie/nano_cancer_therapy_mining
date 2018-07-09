@@ -18,6 +18,7 @@ class MongoDB(object):
         :param collection_name: the name of collection want to store the files
         """
         i = 0
+        #TODO convert article abstract to lower for consistency in processings.
         for article_json in XMLRead(self._config.file_config.raw_xml_dir):
             if 'abstract' in article_json["article"]:
                 self.db[self._config.database_config.collection_name].insert_one(article_json)
