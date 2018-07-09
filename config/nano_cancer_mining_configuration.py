@@ -57,7 +57,7 @@ class NanoCancerConfiguration():
 
     def __init__(self, ):
         self._yaml_config_file = YamlConfiguration()
-        cancer_file = self._yaml_config_file.config["files"]["cancer_names_file"]
+        cancer_file = self._yaml_config_file.config["files"]["cancer_name_file"]
         nano_particle_file = self._yaml_config_file.config["files"]["nano_particle_file"]
         biosensor_file = self._yaml_config_file.config["files"]["biosensor_file"]
         raw_xml_dir = self._yaml_config_file.config["files"]["raw_xml_dir"]

@@ -3,12 +3,19 @@ import pymongo
 from pymongo import MongoClient, IndexModel
 from database.xmlread import XMLRead
 from config.nano_cancer_mining_configuration import NanoCancerConfiguration
+import logging
 
 class MongoDB(object):
     def __init__(self, config : NanoCancerConfiguration):
         client = MongoClient()
         self._config = config
-        self.db = client[config.database_config.name]
+        if config.database_config.name in client.database_names():
+            self.db = client[config.database_config.name]
+        else:
+            logging.warning("Database doesn't exist make a new one!")
+            self.db = client[config.database_config.name]
+            #self.db["mycollection"].insert_one(post)
+
 
     def populate_db(self):
         """
@@ -19,6 +26,7 @@ class MongoDB(object):
         """
         i = 0
         #TODO convert article abstract to lower for consistency in processings.
+        #TODO use insert bulk to make the process of inserting faster
         for article_json in XMLRead(self._config.file_config.raw_xml_dir):
             if 'abstract' in article_json["article"]:
                 self.db[self._config.database_config.collection_name].insert_one(article_json)

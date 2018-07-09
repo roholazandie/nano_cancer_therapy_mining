@@ -2,7 +2,6 @@ from database.pubmed_search import PubMedSearch
 from config.nano_cancer_mining_configuration import NanoCancerConfiguration
 
 
-
 class AssociationFinder(object):
 
 
