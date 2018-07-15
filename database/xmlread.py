@@ -5,6 +5,15 @@ import os
 import gzip
 import logging
 import calendar
+from config.nano_cancer_mining_configuration import NanoCancerConfiguration
+
+config = NanoCancerConfiguration()
+logging.basicConfig(
+            filename=config.logging_config.filename,
+            level=logging.INFO,
+            format=config.logging_config.format)
+logger = logging.getLogger(__name__)
+
 
 
 class XMLRead(object):
@@ -29,9 +38,9 @@ class XMLRead(object):
                 elif fn.endswith(".xml"):
                     xmlstring = open(os.path.join(self.dirname, fn)).read()
                 else:
-                    logging.exception("Unknown type file(s)")
+                    logger.exception("Unknown type file(s)")
             except:
-                logging.exception("Unknown type file(s)")
+                logger.exception("Unknown type file(s)")
                 continue
             article_data = self.get_all_texts(xmlstring, tag="PubmedArticle")
             for article in article_data:
@@ -47,7 +56,12 @@ class XMLRead(object):
         if type(xmlstring) is bytes:
             xmlstring = xmlstring.decode('utf-8')
 
-        context = ET.iterparse(io.BytesIO(xmlstring.encode("utf-8")), events=('end',), tag=tag)
+        try:
+            context = ET.iterparse(io.BytesIO(xmlstring.encode("utf-8")), events=('end',), tag=tag)
+        except:
+            logger.exception("something is wrong with the xmlstring")
+            raise
+
         texts = self.fast_xml_iter(context, lambda elem: None)
         return texts
 
@@ -93,7 +107,7 @@ class XMLRead(object):
             pubmedarticledict["article"]["journal"] = {}
             if abstract_tag and abstract_tag[0].text:
                 abstract_text = abstract_tag[0].text
-                pubmedarticledict["article"]["abstract"] = abstract_text
+                pubmedarticledict["article"]["abstract"] = abstract_text.lower()
 
             PMID_tag = elem.findall(".//PMID")
             if PMID_tag and PMID_tag[0].text:
@@ -148,7 +162,7 @@ class XMLRead(object):
             article_title_tag = elem.findall(".//ArticleTitle")
             if article_title_tag and article_title_tag[0].text:
                 article_title = article_title_tag[0].text
-                pubmedarticledict["article"]["articletitle"] = article_title
+                pubmedarticledict["article"]["articletitle"] = article_title.lower()
 
 
             author_list_tag = elem.find(".//AuthorList")

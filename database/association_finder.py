@@ -28,6 +28,7 @@ class AssociationFinder(object):
         for cancer_name in cancer_names:
             for nano_particle_name in nano_particle_names:
                 cancer_nano_particle_association[cancer_name][nano_particle_name] = self._pubmed_search.rule1_query(cancer_name, nano_particle_name)
+                print(cancer_nano_particle_association[cancer_name][nano_particle_name])
 
 
     def cancer_biosensor_association(self):

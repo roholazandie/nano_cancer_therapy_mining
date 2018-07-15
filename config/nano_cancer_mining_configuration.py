@@ -53,6 +53,24 @@ class FileConfigs():
         return self._raw_xml_dir
 
 
+
+class LoggingConfigs():
+
+    def __init__(self, filename, format):
+        self._filename = filename
+        self._format = format
+
+
+    @property
+    def filename(self):
+        return self._filename
+
+    @property
+    def format(self):
+        return self._format
+
+
+
 class NanoCancerConfiguration():
 
     def __init__(self, ):
@@ -72,6 +90,11 @@ class NanoCancerConfiguration():
         self._database_configs = DatabaseConfigs(root=root, name=name, collection_name=collection_name)
 
 
+        filename = self._yaml_config_file.config["logger"]["log_file"]
+        format = self._yaml_config_file.config["logger"]["format"]
+        self._logging_config = LoggingConfigs(filename=filename, format=format)
+
+
     @property
     def file_config(self):
         return self._file_configs
@@ -79,4 +102,8 @@ class NanoCancerConfiguration():
     @property
     def database_config(self):
         return self._database_configs
+
+    @property
+    def logging_config(self):
+        return self._logging_config
 

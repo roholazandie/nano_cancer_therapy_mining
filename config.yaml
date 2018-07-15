@@ -1,12 +1,15 @@
 files:
-    cancer_name_file: "dataset/cancers.txt"
-    nano_particle_file: "dataset/nanoparticles.txt"
-    biosensor_file: "dataset/nanobiosensors.txt"
+    cancer_name_file: "/home/rohola/Codes/Python/nano_cancer_therapy_mining/dataset/cancers.txt"
+    nano_particle_file: "/home/rohola/Codes/Python/nano_cancer_therapy_mining/dataset/nanoparticles.txt"
+    biosensor_file: "/home/rohola/Codes/Python/nano_cancer_therapy_mining/dataset/nanobiosensors.txt"
     raw_xml_dir: "/media/rohola/09183702400/home/Desktop/data"
 
 
 database:
-    root: "/home/rohola/mongodb_data"
+    root: "/home/rohola/mongodbtest-data"
     name: "pubmeddb"
     collection_name: "articles"
 
+logger:
+    log_file: "nano_cancer_therapy.log"
+    format: "%(asctime)s:%(levelname)s:%(message)s"

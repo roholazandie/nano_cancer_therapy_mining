@@ -5,6 +5,15 @@ from database.xmlread import XMLRead
 from config.nano_cancer_mining_configuration import NanoCancerConfiguration
 import logging
 
+
+config = NanoCancerConfiguration()
+logging.basicConfig(
+            filename=config.logging_config.filename,
+            level=logging.INFO,
+            format=config.logging_config.format)
+logger = logging.getLogger(__name__)
+
+
 class MongoDB(object):
     def __init__(self, config : NanoCancerConfiguration):
         client = MongoClient()
@@ -12,7 +21,7 @@ class MongoDB(object):
         if config.database_config.name in client.database_names():
             self.db = client[config.database_config.name]
         else:
-            logging.warning("Database doesn't exist make a new one!")
+            logger.warning("Database doesn't exist make a new one!")
             self.db = client[config.database_config.name]
             #self.db["mycollection"].insert_one(post)
 
@@ -27,12 +36,17 @@ class MongoDB(object):
         i = 0
         #TODO convert article abstract to lower for consistency in processings.
         #TODO use insert bulk to make the process of inserting faster
+        j = 0
         for article_json in XMLRead(self._config.file_config.raw_xml_dir):
+            j+=1
             if 'abstract' in article_json["article"]:
+                print(article_json['article'])
                 self.db[self._config.database_config.collection_name].insert_one(article_json)
                 i+=1
                 if i%10000==0:
+                    logger.info("writes %d of articles to database" % i)
                     print(i)
+
 
 
     def read(self, limit=None):
