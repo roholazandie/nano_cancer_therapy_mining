@@ -11,5 +11,5 @@ database:
     collection_name: "articles"
 
 logger:
-    log_file: "nano_cancer_therapy.log"
+    log_file: "../dataset/nano_cancer_therapy.log"
     format: "%(asctime)s:%(levelname)s:%(message)s"

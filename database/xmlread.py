@@ -12,8 +12,8 @@ logging.basicConfig(
             filename=config.logging_config.filename,
             level=logging.INFO,
             format=config.logging_config.format)
-logger = logging.getLogger(__name__)
 
+logger = logging.getLogger(__name__)
 
 
 class XMLRead(object):
@@ -21,6 +21,7 @@ class XMLRead(object):
         self.dirname = dirname
         self.preprocessing = None
         self.month_to_number = {v: k for k, v in enumerate(calendar.month_abbr)}
+        self.logger = logging.getLogger(__name__)
 
     def __iter__(self):
         """
@@ -182,6 +183,7 @@ class XMLRead(object):
             if country_tag:
                 country = country_tag[0].text
                 pubmedarticledict["country"] = country
+                logger.debug("country %s"+country)
 
             medline_journal_info_tag = elem.find(".//MedlineJournalInfo")
             if medline_journal_info_tag is not None:

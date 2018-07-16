@@ -40,7 +40,6 @@ class MongoDB(object):
         for article_json in XMLRead(self._config.file_config.raw_xml_dir):
             j+=1
             if 'abstract' in article_json["article"]:
-                print(article_json['article'])
                 self.db[self._config.database_config.collection_name].insert_one(article_json)
                 i+=1
                 if i%10000==0:
