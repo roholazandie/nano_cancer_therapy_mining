@@ -5,14 +5,6 @@ import os
 import gzip
 import logging
 import calendar
-from config.nano_cancer_mining_configuration import NanoCancerConfiguration
-
-config = NanoCancerConfiguration()
-logging.basicConfig(
-            filename=config.logging_config.filename,
-            level=logging.INFO,
-            format=config.logging_config.format)
-
 
 class XMLRead(object):
     def __init__(self, dirname):
@@ -37,9 +29,9 @@ class XMLRead(object):
                 elif fn.endswith(".xml"):
                     xmlstring = open(os.path.join(self.dirname, fn)).read()
                 else:
-                    logger.exception("Unknown type file(s)")
+                    logging.exception("Unknown type file(s)")
             except:
-                logger.exception("Unknown type file(s)")
+                logging.exception("Unknown type file(s)")
                 continue
             article_data = self.get_all_texts(xmlstring, tag="PubmedArticle")
             for article in article_data:
@@ -183,7 +175,6 @@ class XMLRead(object):
             if country_tag:
                 country = country_tag[0].text
                 pubmedarticledict["country"] = country
-                logging.debug("country %s"+country)
 
             medline_journal_info_tag = elem.find(".//MedlineJournalInfo")
             if medline_journal_info_tag is not None:
