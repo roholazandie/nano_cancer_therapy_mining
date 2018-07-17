@@ -13,8 +13,6 @@ logging.basicConfig(
             level=logging.INFO,
             format=config.logging_config.format)
 
-logger = logging.getLogger(__name__)
-
 
 class XMLRead(object):
     def __init__(self, dirname):
@@ -60,7 +58,7 @@ class XMLRead(object):
         try:
             context = ET.iterparse(io.BytesIO(xmlstring.encode("utf-8")), events=('end',), tag=tag)
         except:
-            logger.exception("something is wrong with the xmlstring")
+            logging.exception("something is wrong with the xmlstring")
             raise
 
         texts = self.fast_xml_iter(context, lambda elem: None)
@@ -116,16 +114,18 @@ class XMLRead(object):
                 pubmedarticledict["PMID"] = PMID
 
 
-            date_tag = elem.findall(".//DateCreated")
-            year, month, day = date_tag[0].getchildren()
-            date_created = datetime(year=int(year.text), month=int(month.text), day=int(day.text))
-            pubmedarticledict["datecreated"] = date_created
+            date_created_tag = elem.findall(".//DateCreated")
+            if date_created_tag:
+                year, month, day = date_created_tag[0].getchildren()
+                date_created = datetime(year=int(year.text), month=int(month.text), day=int(day.text))
+                pubmedarticledict["datecreated"] = date_created
 
 
             date_completed_tag = elem.findall(".//DateCompleted")
-            year, month, day = date_completed_tag[0].getchildren()
-            date_completed = datetime(year=int(year.text), month=int(month.text), day=int(day.text))
-            pubmedarticledict["datecompleted"] = date_completed
+            if date_completed_tag:
+                year, month, day = date_completed_tag[0].getchildren()
+                date_completed = datetime(year=int(year.text), month=int(month.text), day=int(day.text))
+                pubmedarticledict["datecompleted"] = date_completed
 
 
             title_tag = elem.findall(".//Title")
@@ -183,7 +183,7 @@ class XMLRead(object):
             if country_tag:
                 country = country_tag[0].text
                 pubmedarticledict["country"] = country
-                logger.debug("country %s"+country)
+                logging.debug("country %s"+country)
 
             medline_journal_info_tag = elem.find(".//MedlineJournalInfo")
             if medline_journal_info_tag is not None:

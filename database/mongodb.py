@@ -11,7 +11,6 @@ logging.basicConfig(
             filename=config.logging_config.filename,
             level=logging.INFO,
             format=config.logging_config.format)
-logger = logging.getLogger(__name__)
 
 
 class MongoDB(object):
@@ -21,7 +20,7 @@ class MongoDB(object):
         if config.database_config.name in client.database_names():
             self.db = client[config.database_config.name]
         else:
-            logger.warning("Database doesn't exist make a new one!")
+            logging.warning("Database doesn't exist make a new one!")
             self.db = client[config.database_config.name]
             #self.db["mycollection"].insert_one(post)
 
@@ -43,7 +42,7 @@ class MongoDB(object):
                 self.db[self._config.database_config.collection_name].insert_one(article_json)
                 i+=1
                 if i%10000==0:
-                    logger.info("writes %d of articles to database" % i)
+                    logging.info("writes %d of articles to database" % i)
                     print(i)
 
 
