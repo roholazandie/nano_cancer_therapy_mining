@@ -1,0 +1,24 @@
+Cancer	[('carcinoma', 0.8044325709342957), ('adenocarcinoma', 0.7908272743225098), ('malignancy', 0.7301126718521118), ('neoplasia', 0.7183524370193481), ('tumour', 0.7158898115158081), ('melanoma', 0.71558678150177), ('caner', 0.7153478860855103), ('crc', 0.7047104835510254), ('tumor', 0.6979819536209106), ('carcinogenesis', 0.6657297611236572)]
+
+Antitumor	[('antitumour', 0.9507184624671936), ('antitumoral', 0.9351470470428467), ('anticancer', 0.8634510040283203), ('antimetastatic', 0.8504424095153809), ('antileukemic', 0.8450520038604736), ('antineoplastic', 0.8385995626449585), ('antiproliferative', 0.8343983888626099), ('antitumoural', 0.8186581134796143), ('tumoricidal', 0.8149467706680298), ('antilymphoma', 0.81261146068573)]
+
+Diagnosis	[('diagnostic', 0.7298994064331055), ('diagnosing', 0.6989911198616028), ('workup', 0.6940582990646362), ('misdiagnosis', 0.6873694658279419), ('staging', 0.6581798791885376), ('diagnose', 0.6504853963851929), ('management', 0.6100038290023804), ('diagnosis.(abstract', 0.6014851331710815), ('cytodiagnosis', 0.60029137134552), ('suspicion', 0.600092351436615)]
+
+Detection	[('quantitation', 0.7531092166900635), ('quantification', 0.7516317367553711), ('detecting', 0.6985636353492737), ('identification', 0.6616238355636597), ('serodiagnosis', 0.6156607866287231), ('immunosensing', 0.6037989854812622), ('immunochromatography', 0.5959807634353638), ('determination', 0.5911681652069092), ('prescreening', 0.583960771560669), ('semiquantitation', 0.5711938738822937)]
+
+Therapy	[('treatment', 0.8344622254371643), ('chemotherapy', 0.7692812085151672), ('pharmacotherapy', 0.7310693860054016), ('immunotherapy', 0.7001201510429382), ('regimen', 0.6849019527435303), ('prophylaxis', 0.6759108304977417), ('monotherapy', 0.6732410192489624), ('biotherapy', 0.6644384264945984), ('therapy.(abstract', 0.6560647487640381), ('therapeutic', 0.6486936807632446)]
+
+Imaging	[('mri', 0.8145701885223389), ('mr', 0.7263826131820679), ('image', 0.7256498336791992), ('microimaging', 0.7101744413375854), ('echography', 0.6888992190361023), ('microendoscopy', 0.6853291392326355), ('spect', 0.6753939390182495), ('sonography', 0.667862594127655), ('ultrasound', 0.6619077324867249), ('tomography', 0.6615592837333679)]
+
+Nanomaterial	[('nanostructure', 0.751498281955719), ('nanoparticle', 0.7443506717681885), ('nanocarbon', 0.743840217590332), ('nanostructured', 0.7298126220703125), ('biomolecule', 0.7135505080223083), ('nanotechnology', 0.7128289937973022), ('nanosystem', 0.7079704999923706), ('biomaterial', 0.6992262601852417), ('nanoparticulate', 0.6910961270332336), ('cnt', 0.679820716381073)]
+
+Nanoparticle	[('nanosphere', 0.9113397002220154), ('nanocrystal', 0.8475762009620667), ('aunps', 0.8305149674415588), ('nanoconjugate', 0.8235812783241272), ('gnps', 0.8074220418930054), ('nanocapsule', 0.8053778409957886), ('nanoshell', 0.8047568798065186), ('nanoparticulate', 0.7988771200180054), ('nanorod', 0.7961814403533936), ('colloidal', 0.7952922582626343)]
+
+Nanocomposite	[('nanohybrid', 0.8991537094116211), ('nanocomposit', 0.8555712103843689), ('bionanocomposite', 0.8536652326583862), ('biocomposite', 0.8403536677360535), ('nanofiber', 0.8367688059806824), ('pani', 0.8232241272926331), ('aerogel', 0.8206747770309448), ('nanobiocomposite', 0.8131121397018433), ('nanosheet', 0.8076754212379456), ('nanostructured', 0.802875280380249)]
+
+Nanosheet	[('nanoflake', 0.8834424018859863), ('nanoplatelet', 0.8781951069831848), ('nanobelt', 0.8665836453437805), ('nanoplate', 0.8617886304855347), ('nanorod', 0.8589885830879211), ('nanowire', 0.853940486907959), ('nanocrystal', 0.8509945869445801), ('biocl', 0.8339620232582092), ('nanoflower', 0.8297050595283508), ('graphene', 0.8291444778442383)]
+
+Nanorod	[('nanocrystal', 0.9114833474159241), ('nanowire', 0.9094240665435791), ('nanoplate', 0.903991162776947), ('nanobelt', 0.8800063133239746), ('nanodot', 0.8745250701904297), ('nanocube', 0.8726264834403992), ('nanodisk', 0.8618941307067871), ('nanostructure', 0.8609175682067871), ('nanoring', 0.8609102368354797), ('nanoprism', 0.8604244589805603)]
+
+Nanosphere	[('nanoparticle', 0.9113397598266602), ('nanocrystal', 0.8627588748931885), ('nanorod', 0.85397869348526), ('nanospher', 0.8538973331451416), ('submicrosphere', 0.8529537916183472), ('nanoshell', 0.8527868390083313), ('nanorattle', 0.8432110548019409), ('nanoparticl', 0.8363892436027527), ('nanogel', 0.8312509059906006), ('nanocapsule', 0.8311881422996521)]
+

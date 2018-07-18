@@ -1,0 +1,42 @@
+Acoustic Wave Biosensors
+Amperometric Biosensor
+aptasensor
+biocatalytic
+biochip
+biodetection
+bioelectrode
+biofets
+biolabel
+biosens
+biosensing
+biosensor
+Blood Glucose Biosensor
+Conduct Metric Biosensor
+DNA biosensors 
+Electrochemical Biosensor
+Enzyme based biosensors
+Fiber Optic Lactate Biosensor
+genosensor
+Immuno Biosensors
+immunoassay
+immunosens
+immunosensor
+Immunosensors biosensors
+Magnetic biosensors
+microchip
+microdevice
+nanobioprobe
+nanobiosensor
+nanoelectrode
+nanofabricated
+Nanoparticle Based Sensors
+nanosensor
+Nanotube Based Sensors
+nanotweezer
+Nanowire Based Sensors
+Optical Biosensors
+Piezoelectric Biosensors
+Potentiometric Biosensor
+Thermal biosensors
+Thermometric Biosensor
+Tissue based biosensors

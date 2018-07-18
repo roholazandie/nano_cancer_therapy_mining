@@ -1,0 +1,338 @@
+Acute granulocytic leukemia 
+Acute lymphocytic leukemia  
+Acute myelogenous leukemia  
+Adenocarcinoma 
+Adenosarcoma 
+Adrenal cancer 
+Adrenocortical carcinoma
+Anaplastic astrocytoma 
+Angiosarcoma 
+Appendix cancer 
+Astrocytoma 
+Basal cell carcinoma 
+Skin cancer 
+B Cell lymphoma 
+Non Hodgkin lymphoma 
+Bile duct cancer 
+Bladder cancer 
+Bone cancer 
+Bone marrow cancer 
+Multiple myeloma
+Bowel cancer  
+Colorectal cancer
+Brain cancer 
+Brain stem glioma 
+Brain tumor  
+Breast cancer 
+Carcinoid tumors 
+Stomach cancer 
+Cervical cancer 
+Cholangiocarcinoma 
+Bile duct cancer
+Chondrosarcoma
+Bone cancer
+Chronic lymphocytic leukemia 
+Chronic myelogenous leukemia 
+Colorectal cancer 
+Craniopharyngioma 
+Cutaneous lymphoma 
+Cutaneous melanoma 
+Diffuse astrocytoma 
+Ductal carcinoma in situ  
+Endometrial cancer 
+Uterine cancer 
+Ependymoma 
+Epithelioid sarcoma 
+Ewing sarcoma 
+Extrahepatic bile duct cancer 
+Eye cancer 
+Fallopian tube cancer 
+Fibrosarcoma 
+Gallbladder cancer 
+Gastric cancer 
+Gastrointestinal cancer 
+Gastrointestinal carcinoid cancer 
+Gastrointestinal stromal tumors 
+Germ cell tumor 
+Gestational Trophoblastic Disease  
+Glioblastoma multiforme  
+Glioma 
+Hairy cell leukemia 
+Head and neck cancer 
+Hemangioendothelioma 
+Hodgkin lymphoma 
+Hodgkin's disease 
+Hypopharyngeal cancer 
+Throat cancer 
+Infiltrating ductal carcinoma 
+Infiltrating lobular carcinoma 
+Inflammatory breast cancer  
+Intrahepatic bile duct cancer 
+Invasive breast cancer 
+Islet cell cancer 
+Pancreatic cancer 
+Jaw cancer 
+Oral cancer 
+Kaposi sarcoma 
+Kidney cancer 
+Laryngeal cancer 
+Leiomyosarcoma 
+Leptomeningeal metastases 
+Leukemia 
+Lip cancer 
+Liposarcoma 
+Liver cancer 
+Lobular carcinoma in situ 
+Low grade astrocytoma 
+Lung cancer 
+Lymph node cancer 
+Lymphoma  
+Male breast cancer 
+Medullary carcinoma 
+Medulloblastoma 
+Melanoma 
+Meningioma 
+Merkel cell carcinoma 
+Mesenchymal chondrosarcoma 
+Mesenchymous 
+Mesothelioma 
+Metastatic breast cancer  
+Metastatic melanoma 
+Metastatic squamous neck cancer 
+Mixed gliomas 
+Mouth cancer 
+Mucinous carcinoma 
+Mucosal melanoma 
+Multiple myeloma 
+Mycosis Fungoides 
+Myelodysplastic Syndrome 
+Nasal cavity cancer 
+Nasopharyngeal cancer 
+Neck cancer 
+Neuroblastoma 
+Neuroendocrine tumors  
+Non Hodgkin lymphoma  
+Non Hodgkin's lymphoma 
+Non small cell lung cancer  
+Ocular cancer 
+Ocular melanoma 
+Oligodendroglioma 
+Oral cancer 
+Oral cavity cancer 
+Oropharyngeal cancer 
+Osteogenic sarcoma 
+Osteosarcoma
+Ovarian epithelial cancer 
+Ovarian germ cell tumor 
+Ovarian primary peritoneal carcinoma
+Ovarian sex cord stromal tumor 
+Paget's disease 
+Pancreatic cancer 
+Papillary carcinoma 
+Paranasal sinus cancer 
+Parathyroid cancer 
+Pelvic cancer 
+Penile cancer 
+Peripheral nerve cancer 
+Peritoneal cancer 
+Pharyngeal cancer 
+Pheochromocytoma 
+Pilocytic astrocytoma 
+Pineal region tumor 
+Pineoblastoma 
+Pituitary tumors 
+Primary central nervous system lymphoma 
+Prostate cancer 
+Rectal cancer 
+Renal cell carcinoma 
+Renal pelvis cancer 
+Rhabdomyosarcoma 
+Salivary gland cancer 
+Sarcoma 
+bone Sarcoma
+soft tissue Sarcoma
+uterine Sarcoma
+Sinus cancer 
+Skin cancer 
+Small cell lung cancer 
+Small intestine cancer
+Soft tissue sarcoma 
+Spinal cancer 
+Spinal column cancer 
+Spinal cord cancer 
+Spinal tumor
+Squamous cell carcinoma
+Stomach cancer 
+Synovial sarcoma 
+T cell lymphoma 
+Testicular cancer 
+Throat cancer 
+Thymic carcinoma 
+Thyroid cancer 
+Tongue cancer 
+Tonsil cancer 
+Transitional cell cancer 
+Triple negative breast cancer
+Tubular carcinoma 
+Undiagnosed Cancer 
+Ureteral cancer 
+Urethral cancer 
+Uterine adenocarcinoma 
+Uterine cancer 
+Uterine sarcoma 
+Vaginal cancer 
+Vulvar cancer
+Colon cancer 
+Esophageal cancer
+Intestinal Cancer
+Oat cell cancer
+infiltrating breast cancer 
+Ovarian cancer 
+Thymoma carcinoma
+Tubal cancer 
+Anal cancer
+Adenocarcinoma
+adenocarcinomas
+adenocarcinomatous
+adenofibroma
+adenohypophysis
+adenoma
+amelanotic
+ameloblastoma
+anaplastic
+ascc
+astroblastoma
+astrocytoma
+astrocytomas
+basaloid
+burkitt
+cancer
+carcinogenesis
+carcinogenesis
+carcinoid
+carcinoma
+carcinomas
+carcinomata
+carcinosarcoma
+ccrcc
+cholangiocarcinoma
+chondroblastoma
+chondroid
+chondrosarcoma
+chondrosarcomas
+chordoma
+choriocarcinoma
+cloves
+comedocarcinoma
+crc
+cscc
+cystadenocarcinoma
+enchondroma
+enchondromatosis
+endometriosis
+ependymoma
+escc
+fibroadipose
+fibromyxoid
+fibrosarcoma
+ganglioglioma
+gbm
+gemistocytic
+glioblastoma
+glioma
+gliosarcoma 
+hemangiopericytoma
+hidradenocarcinoma
+hnscc
+hodgkin
+hodgkins
+hogkin
+hreidarsson
+invasive
+kaposi
+kaposis
+karposi
+leiomyoma
+leiomyomas
+leiomyosarcoma 
+leptomeningeal
+leucaemia
+leucemia
+leukaemia
+leukaemias
+leukaemic
+leukemia 
+lipoleiomyoma
+liposarcoma
+lymphogenic
+lymphoma
+lymphomas
+lymphoreticular
+lymphosarcoma
+malignancy
+malignant
+malignoma
+medulloblastoma
+melanocytic
+melanoma
+melanomas
+meningioma
+metastasis 
+metastastic
+metastatic
+microcarcinoma
+micrometastas
+micrometastasis
+myeloblastic
+myeloid
+myeloma
+myelomatosis
+myelomonocytic
+myxoid
+neoplasia
+neoplasm 
+neoplasma
+neoplastic
+neuroblastoma
+neurocytoma
+neuroendocrine
+neurofibroma
+nonmelanocytic
+nonmetastatic
+nonmyelomatous
+oligoastrocytoma
+oligodendroglioma
+oscc
+osteochondroma
+osteosarcoma
+osteosarcomas
+paraneoplasic
+plasmacytoma
+plasmocytoma
+polyp
+precancer
+preeclampsia
+prolactinoma
+rcc
+rhabdomyosarcoma
+sarcoidosis
+sarcoma
+sarcomas
+sarcomata
+scc
+schwannoma
+somatotrophinoma
+stromal
+syndrome
+thymoma
+trophoblastic 
+tumor
+tumoral
+tumour
+tumoural
+unilesional
+urothelioma
+
+
+
+
