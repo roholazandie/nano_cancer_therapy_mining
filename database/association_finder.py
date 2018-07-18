@@ -1,6 +1,6 @@
 from database.pubmed_search import PubMedSearch
 from config.nano_cancer_mining_configuration import NanoCancerConfiguration
-
+import numpy as np
 
 class AssociationFinder(object):
 
@@ -24,11 +24,18 @@ class AssociationFinder(object):
         cancer_names = [name.rstrip() for name in open(self.cancer_file).readlines()]
         nano_particle_names = [name.rstrip() for name in open(self.nano_particle_file).readlines()]
 
+
         cancer_nano_particle_association = dict()
-        for cancer_name in cancer_names:
-            for nano_particle_name in nano_particle_names:
-                cancer_nano_particle_association[cancer_name][nano_particle_name] = self._pubmed_search.rule1_query(cancer_name, nano_particle_name)
-                print(cancer_nano_particle_association[cancer_name][nano_particle_name])
+        for i, cancer_name in enumerate(cancer_names):
+            cancer_nano_particle_association[cancer_name] = dict()
+            for j, nano_particle_name in enumerate(nano_particle_names):
+                cancer_nano_particle_association[cancer_name][nano_particle_name] = self._pubmed_search.rule1_query(cancer_name.lower(), nano_particle_name.lower())
+                if j%10==0:
+                    with open("backup"+str(j)+".txt", 'w') as fw:
+                        fw.write(str(cancer_nano_particle_association))
+
+        with open("final.txt", 'w') as fw:
+            fw.write(str(cancer_nano_particle_association))
 
 
     def cancer_biosensor_association(self):

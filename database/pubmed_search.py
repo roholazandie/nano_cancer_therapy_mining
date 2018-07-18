@@ -26,7 +26,7 @@ class PubMedSearch(object):
         for result in results:
             # print(result["article"]["journal"]["title"])
             if "abstract" in result["article"]:
-                # print(result["article"]["abstract"])
+                #print(result["article"]["abstract"])
                 pubmed_ids.append(result["PMID"])
 
         return pubmed_ids
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     t1 = time.time()
     nano_cancer_configs = NanoCancerConfiguration()
     pubmedsearch = PubMedSearch(nano_cancer_configs)
-    pubmed_ids = pubmedsearch.rule1_query("cancer", "breast")
+    pubmed_ids = pubmedsearch.rule1_query("true sense but", "simply act")
     print(pubmed_ids)
     t2 = time.time()
 
