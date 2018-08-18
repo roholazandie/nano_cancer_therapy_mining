@@ -17,6 +17,7 @@ tests/.coverage
 build/
 tests/report/
 env/
+dataset/*
 *.dict
 *.mm
 *.pdf
