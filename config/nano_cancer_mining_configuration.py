@@ -27,11 +27,13 @@ class DatabaseConfigs():
 
 class FileConfigs():
 
-    def __init__(self, cancer_file_name, nano_particle_file, biosensor_file_name, raw_xml_dir):
+    def __init__(self, cancer_file_name, nano_particle_file, biosensor_file_name, raw_xml_dir, output_dir, dataset_dir):
         self._cancer_file = cancer_file_name
         self._nano_particle_file = nano_particle_file
         self._biosensor_file = biosensor_file_name
         self._raw_xml_dir = raw_xml_dir
+        self._output_dir = output_dir
+        self._dataset_dir = dataset_dir
 
 
     @property
@@ -51,6 +53,14 @@ class FileConfigs():
     @property
     def raw_xml_dir(self):
         return self._raw_xml_dir
+
+    @property
+    def output_dir(self):
+        return self._output_dir
+
+    @property
+    def dataset_dir(self):
+        return self._dataset_dir
 
 
 
@@ -79,10 +89,15 @@ class NanoCancerConfiguration():
         nano_particle_file = self._yaml_config_file.config["files"]["nano_particle_file"]
         biosensor_file = self._yaml_config_file.config["files"]["biosensor_file"]
         raw_xml_dir = self._yaml_config_file.config["files"]["raw_xml_dir"]
+        output_dir = self._yaml_config_file.config["files"]["output_dir"]
+        dataset_dir = self._yaml_config_file.config["files"]["dataset_dir"]
+
         self._file_configs = FileConfigs(cancer_file_name=cancer_file,
                                          nano_particle_file=nano_particle_file,
                                          biosensor_file_name=biosensor_file,
-                                         raw_xml_dir=raw_xml_dir)
+                                         raw_xml_dir=raw_xml_dir,
+                                         output_dir=output_dir,
+                                         dataset_dir=dataset_dir)
 
         root = self._yaml_config_file.config["database"]["root"]
         name = self._yaml_config_file.config["database"]["name"]

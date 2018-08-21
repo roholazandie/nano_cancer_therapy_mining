@@ -7,8 +7,14 @@ import os
 
 
 
+def histogram(x, y):
 
-def bar_chart_plot(x,y):
+    data = [go.Histogram(y=y)]
+    fig = go.Figure(data=data)
+    offpy(fig, filename="hist.html", auto_open=True, show_link=False)
+
+
+def bar_chart_plot(x,y, output_file):
     data = [go.Bar(
         x=x,
         y=y
@@ -16,7 +22,7 @@ def bar_chart_plot(x,y):
 
     fig = go.Figure(data=data)
 
-    offpy(fig, filename="dd", auto_open=True, show_link=False)
+    offpy(fig, filename=output_file+".html", auto_open=True, show_link=False)
 
 
 def visualize_evolution(psi, phi, words, num_topics):
@@ -57,13 +63,13 @@ def visualize_evolution(psi, phi, words, num_topics):
     offpy(fig, filename="visualize_evolution.html", auto_open=True, show_link=False)
 
 
-def visualize_associations(X, Y, Z):
+def visualize_associations(X, Y, Z, output_file):
     trace = go.Heatmap(z=Z,
                        x=X,
                        y=Y)
     data = [trace]
     fig = go.Figure(data=data)
-    offpy(fig, filename="associations.html", auto_open=True, show_link=False)
+    offpy(fig, filename=output_file+".html", auto_open=True, show_link=False)
 
 
 def show_image(image_url):
