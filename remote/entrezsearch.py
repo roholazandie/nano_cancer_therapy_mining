@@ -12,7 +12,7 @@ class EntrezSearch():
                                 sort='relevance',
                                 retmax='100000',
                                 retmode='xml',
-                                term=query)
+                                term=query + "[Title/Abstract]")
         results = Entrez.read(handle)
         return results
 
@@ -33,6 +33,5 @@ class EntrezSearch():
 
 if __name__ == "__main__":
     entrez_search = EntrezSearch()
-    for i in range(10):
-        results = entrez_search.rule1_query("breast", "cancer")
-        print(results)
+    results = entrez_search.rule1_query("tumor", "nanoparticle")
+    print(len(results))

@@ -1,6 +1,5 @@
 from database.pubmed_search import PubMedSearch
 from config.nano_cancer_mining_configuration import NanoCancerConfiguration
-import numpy as np
 import time
 
 from remote.entrezsearch import EntrezSearch
@@ -71,7 +70,7 @@ class AssociationFinder(object):
                 print("(", i,", ", j, ")")
 
 
-        with open("final.txt", 'w') as fw:
+        with open("cancer_nano_particle_association.txt", 'w') as fw:
             fw.write(str(cancer_nano_particle_association))
 
 
