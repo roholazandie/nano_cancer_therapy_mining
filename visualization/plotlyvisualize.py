@@ -6,9 +6,64 @@ import math
 import os
 
 
+def scatter_plot(x, y, colors,  names, output_file):
 
 
-def bar_chart_plot(x,y):
+    trace = go.Scatter(
+        x=x,
+        y=y,
+        text=names,
+        mode='markers',
+        marker=dict(
+            size=5,
+            color=colors,
+            line=dict(
+                width=1,
+                color='rgb(0, 0, 0)'
+            )
+        )
+    )
+
+    data = [trace]
+    fig = go.Figure(data=data)
+
+    offpy(fig, filename=output_file+".html", auto_open=True, show_link=False)
+
+
+def scatter3d_plot(x, y, z, names, colors=None, output_file=None):
+    if colors is None:
+        colors = 'rgba(10, 10, 10, 0.9)'
+
+    trace = go.Scatter3d(
+        x=x,
+        y=y,
+        z=z,
+        text=names,
+        mode='markers',
+        marker=dict(
+            size=3,
+            color = colors,
+            line=dict(
+                color='rgba(217, 217, 217, 0.14)',
+                width=0.5
+            ),
+            opacity=1
+        )
+    )
+    data = [trace]
+    fig = go.Figure(data=data)
+
+    offpy(fig, filename=output_file+".html", auto_open=True, show_link=False)
+
+
+def histogram(x, y):
+
+    data = [go.Histogram(y=y)]
+    fig = go.Figure(data=data)
+    offpy(fig, filename="hist.html", auto_open=True, show_link=False)
+
+
+def bar_chart_plot(x,y, output_file):
     data = [go.Bar(
         x=x,
         y=y
@@ -16,7 +71,7 @@ def bar_chart_plot(x,y):
 
     fig = go.Figure(data=data)
 
-    offpy(fig, filename="dd", auto_open=True, show_link=False)
+    offpy(fig, filename=output_file+".html", auto_open=True, show_link=False)
 
 
 def visualize_evolution(psi, phi, words, num_topics):
@@ -57,13 +112,13 @@ def visualize_evolution(psi, phi, words, num_topics):
     offpy(fig, filename="visualize_evolution.html", auto_open=True, show_link=False)
 
 
-def visualize_associations(X, Y, Z):
+def visualize_associations(X, Y, Z, output_file):
     trace = go.Heatmap(z=Z,
                        x=X,
                        y=Y)
     data = [trace]
     fig = go.Figure(data=data)
-    offpy(fig, filename="associations.html", auto_open=True, show_link=False)
+    offpy(fig, filename=output_file+".html", auto_open=True, show_link=False)
 
 
 def show_image(image_url):

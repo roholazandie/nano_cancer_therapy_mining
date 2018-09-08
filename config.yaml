@@ -3,6 +3,8 @@ files:
     nano_particle_file: "/home/rohola/Codes/Python/nano_cancer_therapy_mining/dataset/nanoparticles.txt"
     biosensor_file: "/home/rohola/Codes/Python/nano_cancer_therapy_mining/dataset/nanobiosensors.txt"
     raw_xml_dir: "/media/rohola/09183702400/home/Desktop/data"
+    output_dir: "/home/rohola/Codes/Python/nano_cancer_therapy_mining/outputs/"
+    dataset_dir: "/home/rohola/Codes/Python/nano_cancer_therapy_mining/dataset/"
 
 
 database:

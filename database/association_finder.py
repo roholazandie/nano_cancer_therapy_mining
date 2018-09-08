@@ -52,8 +52,10 @@ class AssociationFinder(object):
         combinations of cancer x nano_particle
         :return:
         '''
-        cancer_names = [name.rstrip() for name in open(self.cancer_file).readlines()]
-        nano_particle_names = [name.rstrip() for name in open(self.nano_particle_file).readlines()]
+        cancer_names = sorted(list(
+            set([name.rstrip().lower() for name in open(self.cancer_file).readlines() if len(name.rstrip()) != 0])))
+        nano_particle_names = sorted(list(set(
+            [name.rstrip().lower() for name in open(self.nano_particle_file).readlines() if len(name.rstrip()) != 0])))
 
 
         cancer_nano_particle_association = dict()
@@ -61,9 +63,10 @@ class AssociationFinder(object):
             cancer_nano_particle_association[cancer_name] = dict()
             for j, nano_particle_name in enumerate(nano_particle_names):
                 try:
-                    cancer_nano_particle_association[cancer_name][nano_particle_name] = self._entrez_search.rule1_query(cancer_name.lower(), nano_particle_name.lower())
+                    cancer_nano_particle_association[cancer_name][nano_particle_name] = self._entrez_search.rule1_query(cancer_name, nano_particle_name)
                 except:
                     print("sleeping...")
+                    cancer_nano_particle_association[cancer_name][nano_particle_name] = []
                     time.sleep(10)
                 print("(", i,", ", j, ")")
 

@@ -1,0 +1,28 @@
+working on cancer nano_particle assocation matrix(each cancer considered as a sample and nano particle associations as features)
+#todo should be done on the transpose and other matrices too
+
+
+preprocessing:
+
+1 - log and normalize
+2-  log
+
+
+dimensionality reduction
+1 -  dimensionality reduction using SVD(pca)
+2 -  manifold learning methods:
+	2-1- LLE
+	2-2- Modified LLE
+	2-3- MDS
+	2-4- Spectral Embedding
+	2-5- T-SNE (doens't make much sense because doesnt fit with pca)
+
+
+clustering
+ using kmeans
+
+
+
+
+visualization
+2d and 3d
