@@ -22,3 +22,5 @@ mongod --dbpath="/home/rohola/mongodb-data/"
 - run the script database.mongodb to start populating the database.
 
 - before start populating make sure that the database doesn't exist. if it exist drop it and then run the script again.
+
+export PYTHONPATH="/home/rohola/codes/nano_cancer_therapy_mining"
