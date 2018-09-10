@@ -7,7 +7,8 @@ from sklearn.cluster import KMeans
 from scipy import linalg
 from sklearn import manifold
 import operator
-
+import xmltodict
+from remote.entrezsearch import EntrezSearch
 
 class OutputAnalysis():
 
@@ -26,7 +27,7 @@ class OutputAnalysis():
         nano_particle_names = sorted(list(set(
             [name.rstrip().lower() for name in open(self.nano_particle_file).readlines() if len(name.rstrip()) != 0])))
 
-        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"final.txt").read())
+        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"cancer_nano_particle_association_abstract.txt").read())
 
         frequency_dictionary = dict()
         for cancer_name in cancer_names:
@@ -51,7 +52,7 @@ class OutputAnalysis():
         nano_particle_names = sorted(list(set(
             [name.rstrip().lower() for name in open(self.nano_particle_file).readlines() if len(name.rstrip()) != 0])))
 
-        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"final.txt").read())
+        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"cancer_nano_particle_association_abstract.txt").read())
 
         frequency_dictionary = dict()
         for cancer_name in cancer_names:
@@ -73,14 +74,14 @@ class OutputAnalysis():
 
 
     def visualize_association(self):
-        cancer_names, cancer_particle_associations = self.get_cancer_particle_assosiation()
+        cancer_names, nano_particle_names, cancer_particle_associations = self.get_cancer_particle_assosiation()
 
-        visualize_associations(nano_particle_names, cancer_names, num_associations, output_file=self.output_dir+"heatmap_cancer_nano_particle")
+        visualize_associations(nano_particle_names, cancer_names, cancer_particle_associations, output_file=self.output_dir+"heatmap_cancer_nano_particle")
 
 
 
     def svd_decomposition(self):
-        cancer_names, cancer_particle_associations = self.get_cancer_particle_assosiation()
+        cancer_names, nano_particle_names, cancer_particle_associations = self.get_cancer_particle_assosiation()
 
         # each cancer is a datapoint and paricles act like features, so normalization
         # apply in the first dimension
@@ -115,10 +116,10 @@ class OutputAnalysis():
                 except:
                     cancer_particle_associations[i][j] = 0
                     continue
-        return cancer_names, cancer_particle_associations
+        return cancer_names, nano_particle_names, cancer_particle_associations
 
     def manifold_dim_reduction(self):
-        cancer_names, cancer_particle_associations = self.get_cancer_particle_assosiation()
+        cancer_names, nano_particle_names, cancer_particle_associations = self.get_cancer_particle_assosiation()
 
         method = "se"
 
@@ -180,6 +181,32 @@ class OutputAnalysis():
 
 
 
+class MetaInformation():
+
+
+    def __init__(self):
+        pass
+
+
+    def get_countries(self, raw_xml_string):
+        info_dict = xmltodict.parse(raw_xml_string)
+        country = info_dict['PubmedArticleSet']['PubmedArticle']['MedlineCitation']['MedlineJournalInfo']['Country']
+        return country
+
+
+    def get_journal_title(self, raw_xml_string):
+        info_dict = xmltodict.parse(raw_xml_string)
+        journal_title = info_dict['PubmedArticleSet']['PubmedArticle']['MedlineCitation']['Article']['Journal']['Title']
+        return journal_title
+
+    def list_of_authors(self, raw_xml_string):
+        info_dict = xmltodict.parse(raw_xml_string)
+        authors = info_dict['PubmedArticleSet']['PubmedArticle']['MedlineCitation']['Article']['AuthorList']['Author']
+        authors = [(author["LastName"], author["ForeName"], author["Initials"]) for author in authors]
+        return authors
+
+
+
 
 
 
@@ -190,5 +217,12 @@ if __name__ == "__main__":
     #output_analysis.most_frequent_barchart_cancer_nano_particle(n_associations=100)
     #output_analysis.simplify_output()
     #output_analysis.visualize_association()
-    output_analysis.svd_decomposition()
+    #output_analysis.svd_decomposition()
     #output_analysis.manifold_dim_reduction()
+
+
+    meta_info = MetaInformation()
+    entrez_search = EntrezSearch()
+    raw_xml_string = entrez_search.fetch(24366930)
+    result = meta_info.list_of_authors(raw_xml_string)
+    print(result)
