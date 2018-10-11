@@ -30,7 +30,7 @@ class EntrezSearch():
         :return:
         '''
         # TODO need to do something to handle multipart words! how to search them. like the first one in cancer.txt file
-        phrase_to_search = "("+str(name1)+"[Title/Abstract])" + " AND " + str(name2)+ "[Title/Abstract]"
+        phrase_to_search = "(\""+str(name1)+"\"[Title/Abstract])" + " AND " + str(name2)+ "[Title/Abstract]"
         results = self.search(phrase_to_search)
         pubmed_ids = results["IdList"]
         return pubmed_ids
@@ -39,6 +39,6 @@ class EntrezSearch():
 
 if __name__ == "__main__":
     entrez_search = EntrezSearch()
-    results = entrez_search.rule1_query("cancer", "nanoparticle")
+    results = entrez_search.rule1_query("Electrochemical Biosensor", "cancer")
     print(len(results))
     #entrez_search.fetch(24366930)

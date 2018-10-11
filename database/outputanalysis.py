@@ -33,16 +33,16 @@ class OutputAnalysis():
         for cancer_name in cancer_names:
             for nano_particle_name in nano_particle_names:
                 try:
-                    frequency_dictionary[cancer_name + " " + nano_particle_name] = len(
+                    frequency_dictionary[cancer_name + "\t" + nano_particle_name] = len(
                         cancer_nanoparticle_dict[cancer_name][nano_particle_name])
                 except:
-                    frequency_dictionary[cancer_name + " " + nano_particle_name] = 0
+                    frequency_dictionary[cancer_name + "\t" + nano_particle_name] = 0
 
         sorted_assiciation_frequency = sorted(frequency_dictionary.items(), key=operator.itemgetter(1), reverse=True)
 
         with open(self.output_dir+"simple_cancer_nanoparticle_association.txt", 'w') as file_writer:
             for assiciation, value in sorted_assiciation_frequency:
-                file_writer.write(assiciation+"\t"+str(value)+"\n")
+                file_writer.write(assiciation+"-"+str(value)+"\n")
 
 
 
@@ -212,7 +212,7 @@ class MetaInformation():
 
 if __name__ == "__main__":
     output_analysis = OutputAnalysis()
-    #output_analysis.simplify_output()
+    output_analysis.simplify_output()
     #output_analysis.visualize_association()
     #output_analysis.most_frequent_barchart_cancer_nano_particle(n_associations=100)
     #output_analysis.simplify_output()
@@ -220,9 +220,9 @@ if __name__ == "__main__":
     #output_analysis.svd_decomposition()
     #output_analysis.manifold_dim_reduction()
 
-
-    meta_info = MetaInformation()
-    entrez_search = EntrezSearch()
-    raw_xml_string = entrez_search.fetch(24366930)
-    result = meta_info.list_of_authors(raw_xml_string)
-    print(result)
+    #
+    # meta_info = MetaInformation()
+    # entrez_search = EntrezSearch()
+    # raw_xml_string = entrez_search.fetch(24366930)
+    # result = meta_info.list_of_authors(raw_xml_string)
+    # print(result)
