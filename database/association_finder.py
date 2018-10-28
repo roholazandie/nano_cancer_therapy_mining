@@ -83,20 +83,30 @@ class AssociationFinder(object):
         :param biosensor_file:
         :return:
         '''
-        cancer_names = [name.rstrip() for name in open(self.cancer_file).readlines()]
-        biosensor_names = [name.rstrip() for name in open(self.biosensor_file).readlines()]
+        cancer_names = [name.rstrip().lower() for name in open(self.cancer_file).readlines() if len(name.rstrip()) != 0]
+        biosensor_names = [name.rstrip().lower() for name in open(self.biosensor_file).readlines() if len(name.rstrip()) != 0]
 
         cancer_biosensor_association = dict()
-        for cancer_name in cancer_names:
-            for biosensor_name in biosensor_names:
-                cancer_biosensor_association[cancer_name][biosensor_name] = self._pubmed_search.rule1_query(cancer_name, biosensor_name)
+        for i, cancer_name in enumerate(cancer_names):
+            cancer_biosensor_association[cancer_name] = dict()
+            for j, biosensor_name in enumerate(biosensor_names):
+                try:
+                    cancer_biosensor_association[cancer_name][biosensor_name] = self._pubmed_search.rule1_query(cancer_name, biosensor_name)
+                except:
+                    print("sleeping...")
+                    cancer_biosensor_association[cancer_name][biosensor_name] = []
+                    time.sleep(10)
 
+                print("(", i, ", ", j, ")")
 
+        with open("cancer_biosensor_association.txt", 'w') as fw:
+            fw.write(str(cancer_biosensor_association))
 
 if __name__ == "__main__":
     association_finder = AssociationFinder()
     #association_finder.cancer_nano_particle_association()
-    association_finder.cancer_nano_particle_association_bio()
+    #association_finder.cancer_nano_particle_association_bio()
+    association_finder.cancer_biosensor_association()
 
 
 

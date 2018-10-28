@@ -27,7 +27,7 @@ class OutputAnalysis():
         nano_particle_names = sorted(list(set(
             [name.rstrip().lower() for name in open(self.nano_particle_file).readlines() if len(name.rstrip()) != 0])))
 
-        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"cancer_nano_particle_association_abstract.txt").read())
+        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"cancer_nanoparticle_association_abstract.txt").read())
 
         frequency_dictionary = dict()
         for cancer_name in cancer_names:
@@ -52,7 +52,7 @@ class OutputAnalysis():
         nano_particle_names = sorted(list(set(
             [name.rstrip().lower() for name in open(self.nano_particle_file).readlines() if len(name.rstrip()) != 0])))
 
-        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"cancer_nano_particle_association_abstract.txt").read())
+        cancer_nanoparticle_dict = eval(open(self.dataset_dir+"cancer_nanoparticle_association_abstract.txt").read())
 
         frequency_dictionary = dict()
         for cancer_name in cancer_names:
@@ -212,9 +212,9 @@ class MetaInformation():
 
 if __name__ == "__main__":
     output_analysis = OutputAnalysis()
-    output_analysis.simplify_output()
+    #output_analysis.simplify_output()
     #output_analysis.visualize_association()
-    #output_analysis.most_frequent_barchart_cancer_nano_particle(n_associations=100)
+    output_analysis.most_frequent_barchart_cancer_nano_particle(n_associations=100)
     #output_analysis.simplify_output()
     #output_analysis.visualize_association()
     #output_analysis.svd_decomposition()
