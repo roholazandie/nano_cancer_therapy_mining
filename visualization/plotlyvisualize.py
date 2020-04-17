@@ -43,6 +43,7 @@ def scatter3d_plot(x, y, z, names, colors=None, output_file=None):
         marker=dict(
             size=3,
             color = colors,
+
             line=dict(
                 color='rgba(217, 217, 217, 0.14)',
                 width=0.5

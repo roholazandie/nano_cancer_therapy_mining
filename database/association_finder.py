@@ -91,7 +91,7 @@ class AssociationFinder(object):
             cancer_biosensor_association[cancer_name] = dict()
             for j, biosensor_name in enumerate(biosensor_names):
                 try:
-                    cancer_biosensor_association[cancer_name][biosensor_name] = self._pubmed_search.rule1_query(cancer_name, biosensor_name)
+                    cancer_biosensor_association[cancer_name][biosensor_name] = self._entrez_search.rule1_query(cancer_name, biosensor_name)
                 except:
                     print("sleeping...")
                     cancer_biosensor_association[cancer_name][biosensor_name] = []

@@ -33,8 +33,7 @@ class OutputAnalysis():
         for cancer_name in cancer_names:
             for nano_particle_name in nano_particle_names:
                 try:
-                    frequency_dictionary[cancer_name + "\t" + nano_particle_name] = len(
-                        cancer_nanoparticle_dict[cancer_name][nano_particle_name])
+                    frequency_dictionary[cancer_name + "\t" + nano_particle_name] = cancer_nanoparticle_dict[cancer_name][nano_particle_name]
                 except:
                     frequency_dictionary[cancer_name + "\t" + nano_particle_name] = 0
 
@@ -44,6 +43,28 @@ class OutputAnalysis():
             for assiciation, value in sorted_assiciation_frequency:
                 file_writer.write(assiciation+"-"+str(value)+"\n")
 
+
+    def simplify_output_cancer_nano_bio_sensor(self):
+        cancer_names = sorted(list(
+            set([name.rstrip().lower() for name in open(self.cancer_file).readlines() if len(name.rstrip()) != 0])))
+        nano_bio_sensors = sorted(list(set(
+            [name.rstrip().lower() for name in open(self.biosensor_file).readlines() if len(name.rstrip()) != 0])))
+
+        cancer_nano_bio_sensor = eval(open(self.dataset_dir + "cancer_biosensor_association.txt").read())
+
+        frequency_dictionary = dict()
+        for cancer_name in cancer_names:
+            for nano_biosensor in nano_bio_sensors:
+                try:
+                    frequency_dictionary[cancer_name + "\t" + nano_biosensor] = cancer_nano_bio_sensor[cancer_name][nano_biosensor]
+                except:
+                    frequency_dictionary[cancer_name + "\t" + nano_biosensor] = 0
+
+        sorted_assiciation_frequency = sorted(frequency_dictionary.items(), key=operator.itemgetter(1), reverse=True)
+
+        with open(self.output_dir+"simple_cancer_biosensor_association.txt", 'w') as file_writer:
+            for assiciation, value in sorted_assiciation_frequency:
+                file_writer.write(assiciation+"\t"+str(value)+"\n")
 
 
     def most_frequent_barchart_cancer_nano_particle(self, n_associations):
@@ -181,6 +202,7 @@ class OutputAnalysis():
 
 
 
+
 class MetaInformation():
 
 
@@ -212,9 +234,10 @@ class MetaInformation():
 
 if __name__ == "__main__":
     output_analysis = OutputAnalysis()
-    #output_analysis.simplify_output()
+    output_analysis.simplify_output()
+    #output_analysis.simplify_output_cancer_nano_bio_sensor()
     #output_analysis.visualize_association()
-    output_analysis.most_frequent_barchart_cancer_nano_particle(n_associations=100)
+    #output_analysis.most_frequent_barchart_cancer_nano_particle(n_associations=100)
     #output_analysis.simplify_output()
     #output_analysis.visualize_association()
     #output_analysis.svd_decomposition()
